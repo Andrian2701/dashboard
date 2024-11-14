@@ -8,9 +8,20 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Roboto", "sans-serif"],
+      },
+      fontSize: {
+        sm: "0.7rem",
+        base: "0.9rem",
+        xl: "1rem",
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        white: "#f7f7f7",
+        black: "#232423",
+        gray: "#dbdbdb",
+        purple: "#9a9ae6",
+        blue: "#6161ed",
       },
     },
   },
