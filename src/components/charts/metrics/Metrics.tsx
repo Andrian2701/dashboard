@@ -1,33 +1,20 @@
-import { FaBox, FaDollarSign, FaShoppingCart, FaUsers } from "react-icons/fa";
+"use client";
+import { useSalesData } from "@/hooks/useSalesData";
+import { useProducts } from "@/hooks/useProducts";
+import { useMetrics } from "@/hooks/useMetrics";
+import { useCustomers } from "@/hooks/useCustomers";
 import Card from "./Card";
 
-const data = [
-  {
-    icon: FaBox,
-    val: 1000,
-    title: "Total Products",
-  },
-  {
-    icon: FaDollarSign,
-    val: 25000,
-    title: "Total Revenue",
-  },
-  {
-    icon: FaShoppingCart,
-    val: 1000,
-    title: "Orders Processed",
-  },
-  {
-    icon: FaUsers,
-    val: 1000,
-    title: "Customers",
-  },
-];
-
 const Metrics = () => {
+  const { data: sales } = useSalesData();
+  const { data: products } = useProducts();
+  const { data: customers } = useCustomers();
+
+  const metricsData = useMetrics(sales ?? [], products ?? [], customers ?? []);
+
   return (
     <div className="flex items-center gap-10">
-      {data.map((card) => (
+      {metricsData.map((card) => (
         <Card key={card.title} data={card} />
       ))}
     </div>

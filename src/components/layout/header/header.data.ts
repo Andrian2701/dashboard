@@ -1,18 +1,18 @@
 export const MENU = [
   {
     title: "Dashboard",
-    path: "dashboard",
+    path: "/",
   },
   {
     title: "Products",
-    path: "products",
+    path: "#",
   },
   {
     title: "Orders",
-    path: "orders",
+    path: "#",
   },
   {
     title: "Customers",
-    path: "customers",
+    path: "#",
   },
 ];

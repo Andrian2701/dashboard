@@ -3,55 +3,23 @@ import {
   Area,
   AreaChart,
   CartesianGrid,
+  Legend,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
+import { useSalesData } from "@/hooks/useSalesData";
+import { useIncomeExpence } from "@/hooks/useIncomeExpence";
 
-const data = [
-  {
-    date: "27-01",
-    income: 4000,
-    expence: 2400,
-  },
-  {
-    date: "28-01",
-    income: 3000,
-    expence: 1398,
-  },
-  {
-    date: "29-01",
-    income: 2000,
-    expence: 1209,
-  },
-  {
-    date: "30-01",
-    income: 2780,
-    expence: 980,
-  },
-  {
-    date: "31-01",
-    income: 1890,
-    expence: 2300,
-  },
-  {
-    date: "01-02",
-    income: 2390,
-    expence: 1223,
-  },
-  {
-    date: "02-02",
-    income: 3490,
-    expence: 4300,
-  },
-];
+const IncomeExpenseArea = () => {
+  const { data: sales } = useSalesData();
+  const processedData = useIncomeExpence(sales ?? []);
 
-const AreaChartExmp = () => {
   return (
     <AreaChart
       width={456}
-      height={250}
-      data={data}
+      height={300}
+      data={processedData}
       margin={{ top: 10, bottom: 0 }}
     >
       <defs>
@@ -68,6 +36,7 @@ const AreaChartExmp = () => {
       <YAxis />
       <CartesianGrid strokeDasharray="3 3" />
       <Tooltip />
+      <Legend />
       <Area
         type="monotone"
         dataKey="income"
@@ -86,4 +55,4 @@ const AreaChartExmp = () => {
   );
 };
 
-export default AreaChartExmp;
+export default IncomeExpenseArea;

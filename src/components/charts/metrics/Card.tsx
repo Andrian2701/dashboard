@@ -1,6 +1,14 @@
-import React from "react";
+import { IconType } from "react-icons";
 
-const Card = ({ data }: any) => {
+interface ICard {
+  data: {
+    icon: IconType;
+    val: number;
+    title: string;
+  };
+}
+
+const Card = ({ data }: ICard) => {
   return (
     <div className="flex items-start gap-4">
       <data.icon className="text-purple" />
